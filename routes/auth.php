@@ -59,5 +59,5 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 
     
-    Route::get('/', [Controller::class, 'index'])->name('index');
+    Route::get('/', [Controller::class, 'index'])->name('/');
 });
