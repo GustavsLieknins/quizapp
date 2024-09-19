@@ -3,12 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\admin;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
