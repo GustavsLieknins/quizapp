@@ -1,5 +1,5 @@
 <x-app-layout>
     <div>
-        <h1>Hi these are our quizzes</h1>
+        <h1>Look at the scores</h1>
     </div>
 </x-app-layout>
