@@ -13,7 +13,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        //
+        $quizzes = Quiz::all();
+        return view('quizzes.index', compact('quizzes'));
     }
 
     /**
@@ -21,7 +22,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        //
+        return view('quizzes.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class QuizController extends Controller
      */
     public function store(StoreQuizRequest $request)
     {
-        //
+        $quiz = Quiz::create($request->all());
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -37,7 +39,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return view('quizzes.show', compact('quiz'));
     }
 
     /**
@@ -45,7 +47,7 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        return view('quizzes.edit', compact('quiz'));
     }
 
     /**
@@ -53,7 +55,8 @@ class QuizController extends Controller
      */
     public function update(UpdateQuizRequest $request, Quiz $quiz)
     {
-        //
+        $quiz->update($request->all());
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -61,6 +64,8 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+        return redirect()->route('quizzes.index');
     }
 }
+
