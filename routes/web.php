@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+    Route::get('/about', [QuizController::class, 'about'])->name('about');
     
     
     

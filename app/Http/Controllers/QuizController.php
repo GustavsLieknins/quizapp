@@ -71,5 +71,10 @@ class QuizController extends Controller
         $quiz->delete();
         return redirect()->route('quizzes.index');
     }
+    public function about()
+    {
+        
+        return view('quizzes.about');
+    }
 }
 
