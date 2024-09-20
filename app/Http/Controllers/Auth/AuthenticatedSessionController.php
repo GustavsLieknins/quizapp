@@ -26,10 +26,14 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        $user = Auth::user();
+        $user->last_login_at = now();
+        $user->save();
 
-        return redirect()->intended(route('/', absolute: false));
+        $request->session()->regenerate();
+        return redirect()->intended(route('quizzes.index'));
     }
+    
 
     /**
      * Destroy an authenticated session.

@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
@@ -25,12 +22,12 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/scores', [QuizController::class, 'scores'])->name('scores');
-    
+
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-    
-    
-    
+
+    Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+    Route::post('/questions/{question}/answer', [QuestionController::class, 'answer'])->name('questions.answer');
 });
 
 require __DIR__.'/auth.php';
