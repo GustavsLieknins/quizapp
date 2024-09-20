@@ -1,19 +1,20 @@
 <x-app-layout>
     <style>
-       /* From Uiverse.io by joe-watson-sbf */ 
+       
 .flip-card {
   background-color: transparent;
   width: 190px;
   height: 254px;
   perspective: 1000px;
   font-family: sans-serif;
+  word-wrap: break-word;
 }
 
 .title {
   font-size: 1.5em;
   font-weight: 900;
   text-align: center;
-  margin: 0;
+  margin: 3px;
 }
 
 .flip-card-inner {
@@ -44,7 +45,7 @@
 }
 
 .flip-card-front {
-  background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
+  background: linear-gradient(120deg, white 60%, rgb(255, 231, 222) 88%,
      rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
   color: coral;
 }
