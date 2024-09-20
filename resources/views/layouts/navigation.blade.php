@@ -1,4 +1,4 @@
-<nav>
+<nav class="navbar-div">
     <div>
         <div class="page-link {{ request()->routeIs('/') ? 'page-link-selected' : '' }}">
             <a href="{{ route('/') }}">Start page</a>
@@ -17,6 +17,7 @@
             <x-nav-link :href="route('logout')" class="right-link page-link {{ request()->routeIs('logout') ? 'page-link-selected' : '' }}">
             <div class="right-link-div page-link-div {{ request()->routeIs('logout') ? 'page-link-selected-div' : '' }}">
                 <button>Logout</button>
+                <img src="{{ asset('img/logout-icon.svg') }}" alt="logout">
             </div>
             </x-nav-link>
         </form>

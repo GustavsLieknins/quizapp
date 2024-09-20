@@ -95,3 +95,17 @@ body {
     color: red;
     text-wrap: wrap;
 }
+
+
+.navbar-div
+{
+    display: flex;
+    width: 100vw;
+    height: 20vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: xx-large;
+    font-weight: bolder;
+}
