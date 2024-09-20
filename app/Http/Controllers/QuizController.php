@@ -37,8 +37,12 @@ class QuizController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Quiz $quiz)
+    public function show($id)
     {
+        // Find the quiz by ID
+        $quiz = Quiz::findOrFail($id);
+        
+        // Return the quiz-show view with the quiz data
         return view('quizzes.show', compact('quiz'));
     }
 
