@@ -1,15 +1,11 @@
-
-
-body
-{
+body {
     width: 100vw;
     min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-.main-wrapper
-{
+.main-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,8 +16,7 @@ body
     text-align: center;
     color: white;
 }
-.title-wrapper
-{
+.title-wrapper {
     display: flex;
     width: 100vw;
     height: 25vh;
@@ -32,16 +27,14 @@ body
     font-size: xx-large;
     font-weight: bolder;
 }
-.logreg-wrapper
-{
+.logreg-wrapper {
     display: flex;
     width: 100vw;
     height: 75vh;
     flex-direction: column;
     align-items: center;
 }
-.logreg-div
-{
+.logreg-div {
     display: flex;
     width: 300px;
     flex-direction: column;
@@ -55,8 +48,7 @@ body
     border-radius: 10px;
 }
 
-.logreg-label
-{
+.logreg-label {
     color: white;
     font-size: medium;
     font-weight: bold;
@@ -64,14 +56,11 @@ body
     left: -10px;
     top: 0;
     /* flex-direction: column; */
-
 }
-.logreg-label > input
-{
+.logreg-label > input {
     color: black !important;
 }
-.input-logreg-div
-{
+.input-logreg-div {
     display: flex;
     padding-top: 30px;
     padding-bottom: 5px;
@@ -80,14 +69,12 @@ body
     justify-content: center;
     position: relative;
 }
-.logreg-button
-{
+.logreg-button {
     padding: 5px 10px;
     background-color: green;
     border-radius: 4px;
 }
-.logreg-options
-{
+.logreg-options {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -96,18 +83,15 @@ body
     height: 75px;
 }
 
-.logreg-options > a
-{
+.logreg-options > a {
     color: rgb(173, 205, 230);
     position: absolute;
     text-decoration: underline;
     left: -35px;
     bottom: -15px;
-
 }
 
-.input-error
-{
+.input-error {
     color: red;
     text-wrap: wrap;
 }
