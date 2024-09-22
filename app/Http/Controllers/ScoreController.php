@@ -13,7 +13,8 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        //
+        $scores = Score::all();
+        return view('quizzes.scores', compact('scores'));
     }
 
     /**
