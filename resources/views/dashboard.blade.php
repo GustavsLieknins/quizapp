@@ -5,7 +5,7 @@
         }
     </style>
 
-    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="flex justify-center items-center min-h-screen ">
         <div class="shadow-lg rounded-lg p-10 max-w-lg text-center" style="background-color: rgb(66, 66, 66);">
             <h1 class="text-3xl font-bold text-white mb-4">Welcome to Our Quiz Page</h1>
             <p class="text-gray-300 mb-6">
