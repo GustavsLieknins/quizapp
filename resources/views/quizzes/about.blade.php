@@ -48,8 +48,8 @@
             <!-- Marsmells Section -->
             <div class="bg-gray-700 text-white shadow-lg rounded-lg p-6 text-center">
                 <h2 class="text-3xl font-bold mb-4">Special Teams</h2>
-                <h3 class="text-xl mb-4">Marsmells</h3>
-                <h2 class="text-lg mb-4">Marsmells ir īpašs komandas loceklis, kurš, neskatoties uz savām vajadzībām, vienmēr izrāda apbrīnojamu apņēmību un entuziasmu. Viņa unikālā perspektīva un pieredze bagātina mūsu darbu, un viņš spēj radīt inovatīvus risinājumus. Marsmells ir ļoti atbalstošs, vienmēr gatavs palīdzēt citiem, un viņa klātbūtne komandā veicina sapratni un iekļaušanu. Viņa centība iedvesmo visus, un mēs esam lepni, ka viņš ir daļa no mūsu grupas.</h2>
+                <h3 class="text-xl mb-4">Marsmelis</h3>
+                <h2 class="text-lg mb-4">Marsmelis ir īpašs komandas loceklis, kurš, neskatoties uz savām vajadzībām, vienmēr izrāda apbrīnojamu apņēmību un entuziasmu. Viņa unikālā perspektīva un pieredze bagātina mūsu darbu, un viņš spēj radīt inovatīvus risinājumus. Marsmells ir ļoti atbalstošs, vienmēr gatavs palīdzēt citiem, un viņa klātbūtne komandā veicina sapratni un iekļaušanu. Viņa centība iedvesmo visus, un mēs esam lepni, ka viņš ir daļa no mūsu grupas.</h2>
                 <div class="flex justify-center">
                     <div class="w-32 h-32 bg-gray-500 rounded-full mb-4"></div>
                 </div>
