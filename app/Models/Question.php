@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    use HasFactory;
-
-    // Add fillable properties
     protected $fillable = [
-        'question',
-        'answer',
-        'quiz_id', // Add this line
+        'question', 
+        'option1', 
+        'option2', 
+        'option3', 
+        'option4', 
+        'answer', 
+        'quiz_id'
     ];
 }

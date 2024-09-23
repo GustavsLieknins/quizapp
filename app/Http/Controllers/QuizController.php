@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use App\Models\Quiz;
+use App\Models\Question;
 
 class QuizController extends Controller
 {
@@ -31,8 +32,24 @@ class QuizController extends Controller
     public function store(StoreQuizRequest $request)
     {
         $quiz = Quiz::create($request->all());
+    
+        for ($i = 0; $i < $request->question_amount; $i++) {
+            Question::create([
+                'question' => $request->input('question-' . $i),
+                'option1'  => $request->input('answer-' . $i . '-0'),
+                'option2'  => $request->input('answer-' . $i . '-1'),
+                'option3'  => $request->input('answer-' . $i . '-2'),
+                'option4'  => $request->input('answer-' . $i . '-3'),
+                'answer'   => $request->input('correct-' . $i),            
+                'quiz_id'  => $quiz->id,
+            ]);
+        }
+    
         return redirect()->route('quizzes.index');
     }
+    
+    
+
 
     /**
      * Display the specified resource.

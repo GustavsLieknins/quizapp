@@ -26,12 +26,12 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $user = Auth::user();
-        $user->last_login_at = now();
-        $user->save();
+        // $user = Auth::user();
+        // $user->last_login_at = now();
+        // $user->save();
 
         $request->session()->regenerate();
-        return redirect()->intended(route('quizzes.index'));
+        return redirect()->intended(route('/'));
     }
     
 

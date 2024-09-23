@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ScoreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin;
 
@@ -24,11 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/scores', [QuizController::class, 'scores'])->name('scores');
-    
+    Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-    Route::get('/about', [QuizController::class, 'about'])->name('about');
+
     
     
     

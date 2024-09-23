@@ -56,21 +56,38 @@
   color: white;
   transform: rotateY(180deg);
 }
+
+    .quiz-wrapper
+    {
+        display: flex;
+        margin-top: 3vh;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
     </style>
-@foreach ($quizzes as $quiz)
-<div class="flip-card">
-    <div class="flip-card-inner">
-        <div class="flip-card-front">
-            <p class="title">{{ $quiz->name }}</p>
-            <p>Hover Me</p>
+
+
+    <div class="quiz-wrapper">
+    @foreach ($quizzes as $quiz)
+    <a href="{{ route('quizzes.show', $quiz->id) }}">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">{{ $quiz->name }}</p>
+                    <p>Hover Me</p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">{{ $quiz->description }}</p>
+                    <p class="btn btn-primary">Take Quiz</p>
+                </div>
+            </div>
         </div>
-        <div class="flip-card-back">
-            <p class="title">{{ $quiz->description }}</p>
-            <a href="{{ route('quizzes.show', $quiz->id) }}" class="btn btn-primary">Take Quiz</a>
-        </div>
+    </a>
+    @endforeach
     </div>
-</div>
-@endforeach
     <!-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
