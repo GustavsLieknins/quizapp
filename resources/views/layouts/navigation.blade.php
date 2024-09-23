@@ -53,6 +53,9 @@
         <div class="page-link {{ request()->routeIs('/') ? 'page-link-selected' : '' }}">
             <a href="{{ route('/') }}">Start page</a>
         </div>
+        <div class="page-link {{ request()->routeIs('quizzes.about') ? 'page-link-selected' : '' }}">
+            <a href="{{ route('quizzes.about') }}">About</a>
+        </div>
         <div class="page-link {{ request()->routeIs('quizzes.index') ? 'page-link-selected' : '' }}">
             <a href="{{ route('quizzes.index') }}">Ur quizzes</a>
         </div>
