@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="min-h-screen bg-gray-100 p-10">
+    <div class="min-h-screen p-10">
         <!-- Kapteinis Section -->
         <div class="bg-gray-700 text-white shadow-lg rounded-lg p-6 mb-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Kapteinis</h2>
