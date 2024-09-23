@@ -66,6 +66,7 @@
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+                justify-content: center;
             }
             .questions-container > div
             {
@@ -89,12 +90,13 @@
         <div class="question-amount">
             <label for="question_amount">How many q's do you want to add?</label>
             <select name="question_amount" id="question_amount" required onchange="addQuestions()">
-                @for ($i = 1; $i <= 15; $i++)
+                    <option value="15">Select</option>
+                @for ($i = 15; $i <= 20; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>
                 @endfor
             </select>
         </div>
-        <div class="questions-container"></div>
+        <div class="questions-container" onload="myFunction()"></div>
         <div class="line"></div>
         <button type="submit">Submit</button>
     </form>
@@ -142,6 +144,7 @@
             questionsContainer.appendChild(questionDiv);
         }
     }
+    
 </script>
 
 </x-app-layout>
