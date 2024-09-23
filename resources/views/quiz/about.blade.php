@@ -41,7 +41,7 @@
                 <h3 class="text-xl mb-4">Kristaps</h3>
                 <h2 class="text-lg mb-4">Kristaps ir talantīgs un izskatīgs dizainers, kurš spēj radīt vizuāli pievilcīgus un funkcionālus risinājumus. Viņa radošums un prasme izprast klientu vajadzības ļauj viņam izstrādāt dizainus, kas ne tikai izskatās lieliski, bet arī atbilst mērķiem. Kristaps vienmēr ir gatavs jauniem izaicinājumiem un spēj pielāgoties, lai nodrošinātu, ka katrs projekts ir veiksmīgs.</h2>
                 <div class="flex justify-center">
-                    <div class="w-32 h-32 bg-gray-500 rounded-full mb-4"></div>
+                    <img src="public/img/Photo on 23-09-2024 at 13.00.jpg" class="w-32 h-32 rounded-full mb-4" alt="Kristaps' profile picture">
                 </div>
             </div>
 
