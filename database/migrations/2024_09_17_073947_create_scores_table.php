@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
+            $table->integer("quizId");
+            $table->integer("userId");
+            $table->integer('score');
             $table->timestamps();
         });
     }
