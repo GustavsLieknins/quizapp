@@ -72,6 +72,10 @@
             {
                 margin: 10px;
             }
+            .question-amount
+            {
+                margin-bottom: 20px;
+            }
     </style>
 
 <div class="create-wrapper">
