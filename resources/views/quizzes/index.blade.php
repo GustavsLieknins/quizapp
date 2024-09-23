@@ -1,29 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<x-app-layout>
     <style>
-        .quiz-box {
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            transition: all .3s ease;
-            width: 20vw;
-            height: 20vh;
-            text-align: center;
-        }
+       
+.flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  word-wrap: break-word;
+}
 
-        .quiz-box:hover {
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-        }
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 3px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(120deg, white 60%, rgb(255, 231, 222) 88%,
+     rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
+  color: coral;
+}
+
+.flip-card-back {
+  background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
+     bisque 40%, rgb(255, 185, 160) 78%);
+  color: white;
+  transform: rotateY(180deg);
+}
     </style>
-</head>
-<body>
-    <div class="container">
+@foreach ($quizzes as $quiz)
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <p class="title">{{ $quiz->name }}</p>
+            <p>Hover Me</p>
+        </div>
+        <div class="flip-card-back">
+            <p class="title">{{ $quiz->description }}</p>
+            <a href="{{ route('quizzes.show', $quiz->id) }}" class="btn btn-primary">Take Quiz</a>
+        </div>
+    </div>
+</div>
+@endforeach
+    <!-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -41,7 +89,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    </div> -->
+
+</x-app-layout>
 
