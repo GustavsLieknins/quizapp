@@ -53,14 +53,14 @@
         <div class="page-link {{ request()->routeIs('/') ? 'page-link-selected' : '' }}">
             <a href="{{ route('/') }}">Start page</a>
         </div>
-        <div class="page-link {{ request()->routeIs('quizzes.about') ? 'page-link-selected' : '' }}">
-            <a href="{{ route('quizzes.about') }}">About</a>
-        </div>
         <div class="page-link {{ request()->routeIs('quizzes.index') ? 'page-link-selected' : '' }}">
             <a href="{{ route('quizzes.index') }}">Quizzes</a>
         </div>
         <div class="page-link {{ request()->routeIs('scores.index') ? 'page-link-selected' : '' }}">
             <a href="{{ route('scores.index') }}">Scores</a>
+        </div>
+        <div class="page-link {{ request()->routeIs('quizzes.about') ? 'page-link-selected' : '' }}">
+            <a href="{{ route('quizzes.about') }}">About</a>
         </div>
     </div>
     <div class="action-links">
