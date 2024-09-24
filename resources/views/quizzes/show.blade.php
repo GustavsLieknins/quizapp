@@ -42,9 +42,9 @@
             <div class="counter">
                 <p>Question: {{ session('curQuestion') }} of {{ $questionCount }}</p>
             </div>
-            <div class="progress-bar">
-            </div>
+            
             <div>
+            
                 <h1>{{ $quiz->name }}</h1>
             </div>
             <div>
