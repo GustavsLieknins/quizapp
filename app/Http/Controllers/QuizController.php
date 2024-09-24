@@ -53,6 +53,7 @@ class QuizController extends Controller
 
     public function show($id)
     {
+        session()->put('finished', false);
         $quiz = Quiz::find($id);
         $questions = Question::where('quiz_id', $id)->get();
 
@@ -70,6 +71,11 @@ class QuizController extends Controller
         $quiz = Quiz::find($id);
         $questions = Question::where('quiz_id', $id)->get();
         $questionCount = Question::where('quiz_id', $id)->count();
+        
+        if(session('finished') == true)
+        {
+            return view('quizzes.result', compact('questionCount'));
+        }
 
         if($request->answer == $questions[session('curQuestion') - 1]->answer)
         {
@@ -77,6 +83,8 @@ class QuizController extends Controller
         }
         if(session('curQuestion') == $questionCount)
         {
+            session()->put('curQuestion', 0);
+            session()->put('finished', true);
             return view('quizzes.result', compact('questionCount'));
         }
 
