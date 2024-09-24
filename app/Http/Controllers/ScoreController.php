@@ -12,10 +12,15 @@ class ScoreController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $scores = Score::all();
-        return view('quizzes.scores', compact('scores'));
-    }
+{
+    $scores = \App\Models\Score::where('userId', auth()->id())
+                ->join('quizzes', 'quizzes.id', '=', 'scores.quizId')
+                ->select('quizzes.name as quiz_name', 'scores.score', 'scores.created_at')
+                ->orderBy('scores.created_at', 'desc')
+                ->get();
+
+    return view('quizzes.scores', compact('scores'));
+}
 
     /**
      * Show the form for creating a new resource.
