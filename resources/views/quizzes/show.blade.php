@@ -76,22 +76,21 @@
             <div>
                 <form action="{{ route('quizzes.next', $quiz->id) }}" method="POST" class="form">
                     @csrf
-                        <label>
-                            <input type="radio" name="answer" value="0">
-                            {{ $questions[session('curQuestion') - 1]->option1 }}
-                        </label>
-                        <label>
-                            <input type="radio" name="answer" value="1">
-                            {{ $questions[session('curQuestion') - 1]->option2 }}
-                        </label>
-                        <label>
-                            <input type="radio" name="answer" value="2">
-                            {{ $questions[session('curQuestion') - 1]->option3 }}
-                        </label>
-                        <label>
-                            <input type="radio" name="answer" value="3">
-                            {{ $questions[session('curQuestion') - 1]->option4 }}
-                        </label>
+                        @php
+                            $options = [
+                                ['value' => 0, 'option' => $questions[session('curQuestion') - 1]->option1],
+                                ['value' => 1, 'option' => $questions[session('curQuestion') - 1]->option2],
+                                ['value' => 2, 'option' => $questions[session('curQuestion') - 1]->option3],
+                                ['value' => 3, 'option' => $questions[session('curQuestion') - 1]->option4],
+                            ];
+                            shuffle($options);
+                        @endphp
+                        @foreach ($options as $option)
+                            <label>
+                                <input type="radio" name="answer" value="{{ $option['value'] }}">
+                                {{ $option['option'] }}
+                            </label>
+                        @endforeach
                         <button>Next</button>
                 </form>
             </div>
