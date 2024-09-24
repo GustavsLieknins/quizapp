@@ -14,7 +14,26 @@
             border-left: 1px solid gray;
             border-right: 1px solid gray;
         }
-
+        .form
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        .form > button
+        {
+            margin-top: 10px;
+            background-color: #33b249;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .bolder
+        {
+            font-weight: bold;
+        }
+        .form > label > input
+        {
+            margin-right: 5px;
+        }
 
     </style>
     <div class="container">
@@ -29,10 +48,10 @@
                 <h1>{{ $quiz->name }}</h1>
             </div>
             <div>
-                <p>Question: {{ $questions[session('curQuestion') - 1]->question }}</p>
+                <p><span class="bolder">Question:</span> {{ $questions[session('curQuestion') - 1]->question }}</p>
             </div>
             <div>
-                <form action="{{ route('quizzes.next', $quiz->id) }}" method="POST">
+                <form action="{{ route('quizzes.next', $quiz->id) }}" method="POST" class="form">
                     @csrf
                         <label>
                             <input type="radio" name="answer" value="0">
