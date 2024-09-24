@@ -23,11 +23,7 @@
             <div class="counter">
                 <p>Question: {{ session('curQuestion') }} of {{ $questionCount }}</p>
             </div>
-            <div style="width: 100%; border: 1px solid black; height: 20px;">
-            <div class="progress-bar">
-                <div style="width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%; background-color: green; height: 20px"></div>
-            </div>
-            </div>
+            
             <div>
             
                 <h1>{{ $quiz->name }}</h1>
