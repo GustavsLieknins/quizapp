@@ -18,6 +18,8 @@ class QuizController extends Controller
         return view('quizzes.index', compact('quizzes'));
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -67,30 +69,42 @@ class QuizController extends Controller
     }
 
     public function next(Request $request, $id)
-    {
-        $quiz = Quiz::find($id);
-        $questions = Question::where('quiz_id', $id)->get();
-        $questionCount = Question::where('quiz_id', $id)->count();
-        
-        if(session('finished') == true)
-        {
-            return view('quizzes.result', compact('questionCount'));
-        }
-
-        if($request->answer == $questions[session('curQuestion') - 1]->answer)
-        {
-            session()->put('correct', session('correct') + 1);
-        }
-        if(session('curQuestion') == $questionCount)
-        {
-            session()->put('curQuestion', 0);
-            session()->put('finished', true);
-            return view('quizzes.result', compact('questionCount'));
-        }
-
-        session()->put('curQuestion', session('curQuestion') + 1);
-        return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
+{
+    $quiz = Quiz::find($id);
+    $questions = Question::where('quiz_id', $id)->get();
+    $questionCount = $questions->count();
+    
+    // Checking if the quiz is finished
+    if (session('finished') == true) {
+        return view('quizzes.result', compact('questionCount'));
     }
+
+    // Check if the answer is correct
+    if ($request->answer == $questions[session('curQuestion') - 1]->answer) {
+        session()->put('correct', session('correct') + 1);
+    }
+
+    // If it's the last question, finish the quiz
+    if (session('curQuestion') == $questionCount) {
+        session()->put('finished', true);
+
+        // Store the result in the scores table
+        \App\Models\Score::create([
+            'quizId' => $quiz->id,
+            'userId' => auth()->id(),  // Assuming the user is logged in
+            'score'  => session('correct')
+        ]);
+
+        return view('quizzes.result', [
+            'questionCount' => $questionCount,
+            'correct' => session('correct'),
+            'incorrect' => $questionCount - session('correct')
+        ]);
+    }
+
+    session()->put('curQuestion', session('curQuestion') + 1);
+    return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
+}
     /**
      * Show the form for editing the specified resource.
      */
