@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use App\Models\Quiz;
@@ -51,18 +51,38 @@ class QuizController extends Controller
     
 
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
-        // Find the quiz by ID
-        $quiz = Quiz::findOrFail($id);
+        $quiz = Quiz::find($id);
+        $questions = Question::where('quiz_id', $id)->get();
+
+        $questionCount = Question::where('quiz_id', $id)->count();
+
+        session()->put('curQuestion', 1);
+        session()->put('correct', 0);
         
-        // Return the quiz-show view with the quiz data
-        return view('quizzes.show', compact('quiz'));
+        
+        return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
     }
 
+    public function next(Request $request, $id)
+    {
+        $quiz = Quiz::find($id);
+        $questions = Question::where('quiz_id', $id)->get();
+        $questionCount = Question::where('quiz_id', $id)->count();
+
+        if($request->answer == $questions[session('curQuestion') - 1]->answer)
+        {
+            session()->put('correct', session('correct') + 1);
+        }
+        if(session('curQuestion') == $questionCount)
+        {
+            return view('quizzes.result', compact('questionCount'));
+        }
+
+        session()->put('curQuestion', session('curQuestion') + 1);
+        return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
