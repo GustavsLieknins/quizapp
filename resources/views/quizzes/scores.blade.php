@@ -1,20 +1,20 @@
 <x-app-layout>
     <div class="container">
         <h1>Your Past Scores</h1>
-        <table>
+        <table class="border border-gray-400 border-collapse w-full">
             <thead>
                 <tr>
-                    <th>Quiz Name</th>
-                    <th>Score</th>
-                    <th>Date</th>
+                    <th class="border border-gray-400 px-4 py-2">Quiz Name</th>
+                    <th class="border border-gray-400 px-4 py-2">Score</th>
+                    <th class="border border-gray-400 px-4 py-2">Date</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($scores as $score)
                     <tr>
-                        <td>{{ $score->quiz_name }}</td>
-                        <td>{{ $score->score }}</td>
-                        <td>{{ $score->created_at->format('Y-m-d') }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ $score->quiz_name }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ $score->score }} / {{ $score->total_questions }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ $score->created_at->format('Y-m-d') }}</td>
                     </tr>
                 @endforeach
             </tbody>

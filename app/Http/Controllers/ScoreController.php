@@ -15,7 +15,10 @@ class ScoreController extends Controller
 {
     $scores = \App\Models\Score::where('userId', auth()->id())
                 ->join('quizzes', 'quizzes.id', '=', 'scores.quizId')
-                ->select('quizzes.name as quiz_name', 'scores.score', 'scores.created_at')
+                ->leftJoin('questions', 'quizzes.id', '=', 'questions.quiz_id')
+                ->select('quizzes.name as quiz_name', 'scores.score', 'scores.created_at', 
+                         \DB::raw('COUNT(questions.id) as total_questions'))
+                ->groupBy('quizzes.id', 'scores.score', 'scores.created_at')
                 ->orderBy('scores.created_at', 'desc')
                 ->get();
 
