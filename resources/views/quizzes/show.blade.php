@@ -1,13 +1,29 @@
 <x-app-layout>
     <style>
+        .container
+        {
+            display: flex;
+            min-width: 100vw;
+            height: 100vh;
+            justify-content: center;
+        }
+        .main-wrapper
+        {
+            padding: 30px 150px;
+            padding-bottom: 0px;
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+        }
+
 
     </style>
     <div class="container">
         <div class="main-wrapper">
+
+            <div class="counter">
+                <p>Question: {{ session('curQuestion') }} of {{ $questionCount }}</p>
+            </div>
             <div class="progress-bar">
-                <div class="counter">
-                    <p>Question: {{ session('curQuestion') }} of {{ $questionCount }}</p>
-                </div>
             </div>
             <div>
                 <h1>{{ $quiz->name }}</h1>
