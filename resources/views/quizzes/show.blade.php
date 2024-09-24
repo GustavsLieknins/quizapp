@@ -34,22 +34,41 @@
         {
             margin-right: 5px;
         }
+        .title-div
+        {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        
+        .progress-bar > div
+        {
+            border-radius: 1px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        .progress-bar-div
+        {
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
 
     </style>
     <div class="container">
         <div class="main-wrapper">
 
+            <div class="title-div">
+                <h1>{{ $quiz->name }}</h1>
+            </div>
             <div class="counter">
                 <p>Question: {{ session('curQuestion') }} of {{ $questionCount }}</p>
             </div>
-            <div style="width: 100%; border: 1px solid black; height: 20px;">
+            <div class="progress-bar-div" style="width: 100%; border: 1px solid black; height: 20px;">
             <div class="progress-bar">
-                <div style="width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%; background-color: green; height: 20px"></div>
+                <div style="width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%; background-color: green; height: 18px"></div>
             </div>
-            </div>
-            <div>
-            
-                <h1>{{ $quiz->name }}</h1>
             </div>
             <div>
                 <p><span class="bolder">Question:</span> {{ $questions[session('curQuestion') - 1]->question }}</p>
