@@ -83,16 +83,26 @@ class QuizController extends Controller
                 'score'  => session('correct')
             ]);
 
-            return view('quizzes.result', [
-                'questionCount' => $questionCount,
-                'correct' => session('correct'),
-                'incorrect' => $questionCount - session('correct')
-            ]);
+
+            session()->put('questionCount', $questionCount);
+            session()->put('correct', session('correct'));
+            session()->put('incorrect', $questionCount - session('correct'));
+
+            return redirect()->route('quizzes.result');
         }
 
         return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
     }
 
+    
+    public function result(Request $request)
+    {
+        return view('quizzes.result', [
+            'questionCount' => session('questionCount'),
+            'correct' => session('correct'),
+            'incorrect' => session('incorrect')
+        ]);
+    }
     public function edit(Quiz $quiz)
     {
         return view('quizzes.edit', compact('quiz'));

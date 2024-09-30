@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
     Route::get('/leaderboard/{quiz}', [LeaderboardController::class, 'show'])->name('leaderboard.show');
     
+    Route::get('/result', [QuizController::class, 'result'])->name('quizzes.result');
 });
 
 require __DIR__.'/auth.php';
