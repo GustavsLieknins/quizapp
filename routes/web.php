@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('quizzes/scores', [ScoreController::class, 'index'])->name('quizzes.scores');
     
     
+    Route::get('/result', [QuizController::class, 'result'])->name('quizzes.result');
 });
 
 require __DIR__.'/auth.php';

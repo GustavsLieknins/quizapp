@@ -54,6 +54,22 @@
             border-radius: 3px;
             margin-bottom: 5px;
         }
+        .prog-bar-color
+        {
+            animation: progress 0.3s ease-in-out;
+        }
+
+        @keyframes progress
+        {
+            from
+            {
+                width: 0%;
+            }
+            to
+            {
+                width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%;
+            }
+        }
 
     </style>
             @php
@@ -76,7 +92,7 @@
             </div>
             <div class="progress-bar-div" style="width: 100%; border: 1px solid black; height: 20px;">
             <div class="progress-bar">
-                <div style="width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%; background-color: green; height: 18px"></div>
+                <div class="prog-bar-color" style="width: {{ (session('curQuestion') - 1) / $questionCount * 100 }}%; background-color: green; height: 18px"></div>
             </div>
             </div>
             <div>
