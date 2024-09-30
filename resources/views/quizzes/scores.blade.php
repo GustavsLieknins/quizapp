@@ -1,6 +1,14 @@
 <x-app-layout>
     <div class="container">
         <h1>Your Past Scores</h1>
+        
+        <!-- Display the average, min, and max scores -->
+        <div class="mb-4">
+            <p><strong>Average Score:</strong> {{ $averageScore }}</p>
+            <p><strong>Minimum Score:</strong> {{ $minScore }}</p>
+            <p><strong>Maximum Score:</strong> {{ $maxScore }}</p>
+        </div>
+
         <table class="border border-gray-400 border-collapse w-full">
             <thead>
                 <tr>

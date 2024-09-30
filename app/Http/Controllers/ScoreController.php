@@ -12,7 +12,8 @@ class ScoreController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
+    {
+    // Fetch the user's scores along with quiz details
     $scores = \App\Models\Score::where('userId', auth()->id())
                 ->join('quizzes', 'quizzes.id', '=', 'scores.quizId')
                 ->leftJoin('questions', 'quizzes.id', '=', 'questions.quiz_id')
@@ -22,8 +23,16 @@ class ScoreController extends Controller
                 ->orderBy('scores.created_at', 'desc')
                 ->get();
 
-    return view('quizzes.scores', compact('scores'));
-}
+    // Calculate the average score for the logged-in user
+    $averageScore = round(\App\Models\Score::where('userId', auth()->id())->avg('score'));
+    $minScore = \App\Models\Score::where('userId', auth()->id())->min('score');
+    $maxScore = \App\Models\Score::where('userId', auth()->id())->max('score');
+
+    // Pass both the scores and average score to the view
+    return view('quizzes.scores', compact('scores', 'averageScore', 'minScore', 'maxScore'));
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.
