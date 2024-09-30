@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\LeaderboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin;
 
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/next/{id}', [QuizController::class, 'next'])->name('quizzes.next');
     Route::get('quizzes/scores', [ScoreController::class, 'index'])->name('quizzes.scores');
     
+    Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
+    Route::get('/leaderboard/{quiz}', [LeaderboardController::class, 'show'])->name('leaderboard.show');
     
     Route::get('/result', [QuizController::class, 'result'])->name('quizzes.result');
 });

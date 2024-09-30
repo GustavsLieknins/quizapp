@@ -59,6 +59,9 @@
         <div class="page-link {{ request()->routeIs('scores.index') ? 'page-link-selected' : '' }}">
             <a href="{{ route('scores.index') }}">Scores</a>
         </div>
+        <div class="page-link {{ request()->routeIs('leaderboard.index') ? 'page-link-selected' : '' }}">
+            <a href="{{ route('leaderboard.index') }}">Leaderboard</a>
+        </div>
         <div class="page-link {{ request()->routeIs('quizzes.about') ? 'page-link-selected' : '' }}">
             <a href="{{ route('quizzes.about') }}">About</a>
         </div>
