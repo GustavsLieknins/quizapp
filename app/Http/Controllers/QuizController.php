@@ -9,28 +9,17 @@ use App\Models\Question;
 
 class QuizController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $quizzes = Quiz::all();
         return view('quizzes.index', compact('quizzes'));
     }
 
-    
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('quizzes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreQuizRequest $request)
     {
         $quiz = Quiz::create($request->all());
@@ -49,90 +38,80 @@ class QuizController extends Controller
     
         return redirect()->route('quizzes.index');
     }
-    
-    
-
 
     public function show($id)
     {
         session()->put('finished', false);
         $quiz = Quiz::find($id);
         $questions = Question::where('quiz_id', $id)->get();
-
-        $questionCount = Question::where('quiz_id', $id)->count();
-
+        $questionCount = $questions->count();
+    
         session()->put('curQuestion', 1);
         session()->put('correct', 0);
-        
-        
+    
         return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
     }
 
     public function next(Request $request, $id)
-{
-    $quiz = Quiz::find($id);
-    $questions = Question::where('quiz_id', $id)->get();
-    $questionCount = $questions->count();
-    
-    // Checking if the quiz is finished
-    if (session('finished') == true) {
-        return view('quizzes.result', compact('questionCount'));
+    {
+        $quiz = Quiz::find($id);
+        $questions = Question::where('quiz_id', $id)->get();
+        $questionCount = $questions->count();
+        if(session('token69') == $request->token69) {
+            return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
+        }
+        session()->put('token69', $request->token69);
+
+        if (session('finished') == true) {
+            return view('quizzes.result', compact('questionCount'));
+        }
+
+        if ($request->isMethod('post') && $request->has('answer')) {
+            if ($request->answer == $questions[session('curQuestion') - 1]->answer) {
+                session()->put('correct', session('correct') + 1);
+            }
+
+            session()->put('curQuestion', session('curQuestion') + 1);
+        }
+
+        if (session('curQuestion') > $questionCount) {
+            session()->put('finished', true);
+
+            \App\Models\Score::create([
+                'quizId' => $quiz->id,
+                'userId' => auth()->id(),  // Assuming the user is logged in
+                'score'  => session('correct')
+            ]);
+
+            return view('quizzes.result', [
+                'questionCount' => $questionCount,
+                'correct' => session('correct'),
+                'incorrect' => $questionCount - session('correct')
+            ]);
+        }
+
+        return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
     }
 
-    // Check if the answer is correct
-    if ($request->answer == $questions[session('curQuestion') - 1]->answer) {
-        session()->put('correct', session('correct') + 1);
-    }
-
-    // If it's the last question, finish the quiz
-    if (session('curQuestion') == $questionCount) {
-        session()->put('finished', true);
-
-        // Store the result in the scores table
-        \App\Models\Score::create([
-            'quizId' => $quiz->id,
-            'userId' => auth()->id(),  // Assuming the user is logged in
-            'score'  => session('correct')
-        ]);
-
-        return view('quizzes.result', [
-            'questionCount' => $questionCount,
-            'correct' => session('correct'),
-            'incorrect' => $questionCount - session('correct')
-        ]);
-    }
-
-    session()->put('curQuestion', session('curQuestion') + 1);
-    return view('quizzes.show', compact('quiz', 'questions', 'questionCount'));
-}
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Quiz $quiz)
     {
         return view('quizzes.edit', compact('quiz'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateQuizRequest $request, Quiz $quiz)
     {
         $quiz->update($request->all());
         return redirect()->route('quizzes.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();
         return redirect()->route('quizzes.index');
     }
+
     public function about()
     {
-        
         return view('quizzes.about');
     }
 }

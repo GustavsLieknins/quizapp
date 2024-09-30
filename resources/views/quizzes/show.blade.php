@@ -56,15 +56,15 @@
         }
 
     </style>
-    @php
-        $options = [
-            ['value' => 0, 'option' => $questions[session('curQuestion') - 1]->option1],
-            ['value' => 1, 'option' => $questions[session('curQuestion') - 1]->option2],
-            ['value' => 2, 'option' => $questions[session('curQuestion') - 1]->option3],
-            ['value' => 3, 'option' => $questions[session('curQuestion') - 1]->option4],
-        ];
-        shuffle($options);
-    @endphp
+            @php
+                $options = [
+                    ['value' => 0, 'option' => $questions[session('curQuestion') - 1]->option1],
+                    ['value' => 1, 'option' => $questions[session('curQuestion') - 1]->option2],
+                    ['value' => 2, 'option' => $questions[session('curQuestion') - 1]->option3],
+                    ['value' => 3, 'option' => $questions[session('curQuestion') - 1]->option4],
+                ];
+                shuffle($options);
+            @endphp
     <div class="container">
         <div class="main-wrapper">
 
@@ -91,6 +91,7 @@
                                 {{ $option['option'] }}
                             </label>
                         @endforeach
+                        <input type="hidden" name="token69" value="{{ Str::random(32) }}">
                         <button>Next</button>
                 </form>
             </div>
