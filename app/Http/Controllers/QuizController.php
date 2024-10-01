@@ -54,6 +54,9 @@ class QuizController extends Controller
 
     public function next(Request $request, $id)
     {
+        if(session('finished') == true) {
+            return redirect()->route('quizzes.index');
+        }
         $quiz = Quiz::find($id);
         $questions = Question::where('quiz_id', $id)->get();
         $questionCount = $questions->count();
@@ -87,6 +90,7 @@ class QuizController extends Controller
             session()->put('questionCount', $questionCount);
             session()->put('correct', session('correct'));
             session()->put('incorrect', $questionCount - session('correct'));
+            session()->put('lastQuiz_id', $quiz->id);
 
             return redirect()->route('quizzes.result');
         }
@@ -99,6 +103,7 @@ class QuizController extends Controller
     {
         return view('quizzes.result', [
             'questionCount' => session('questionCount'),
+            'lastQuiz_id' => session('lastQuiz_id'),
             'correct' => session('correct'),
             'incorrect' => session('incorrect')
         ]);
