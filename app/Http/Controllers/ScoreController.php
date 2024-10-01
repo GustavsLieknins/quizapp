@@ -14,22 +14,22 @@ class ScoreController extends Controller
     public function index()
     {
     // Fetch the user's scores along with quiz details
-    $scores = \App\Models\Score::where('userId', auth()->id())
-                ->join('quizzes', 'quizzes.id', '=', 'scores.quizId')
-                ->leftJoin('questions', 'quizzes.id', '=', 'questions.quiz_id')
-                ->select('quizzes.name as quiz_name', 'scores.score', 'scores.created_at', 
-                         \DB::raw('COUNT(questions.id) as total_questions'))
-                ->groupBy('quizzes.id', 'scores.score', 'scores.created_at')
-                ->orderBy('scores.created_at', 'desc')
-                ->get();
+        $scores = \App\Models\Score::where('userId', auth()->id())
+                    ->join('quizzes', 'quizzes.id', '=', 'scores.quizId')
+                    ->leftJoin('questions', 'quizzes.id', '=', 'questions.quiz_id')
+                    ->select('quizzes.name as quiz_name', 'scores.score', 'scores.created_at', 
+                            \DB::raw('COUNT(questions.id) as total_questions'))
+                    ->groupBy('quizzes.id', 'scores.score', 'scores.created_at')
+                    ->orderBy('scores.created_at', 'desc')
+                    ->get();
 
-    // Calculate the average score for the logged-in user
-    $averageScore = round(\App\Models\Score::where('userId', auth()->id())->avg('score'));
-    $minScore = \App\Models\Score::where('userId', auth()->id())->min('score');
-    $maxScore = \App\Models\Score::where('userId', auth()->id())->max('score');
+        // Calculate the average score for the logged-in user
+        $averageScore = round(\App\Models\Score::where('userId', auth()->id())->avg('score'));
+        $minScore = \App\Models\Score::where('userId', auth()->id())->min('score');
+        $maxScore = \App\Models\Score::where('userId', auth()->id())->max('score');
 
-    // Pass both the scores and average score to the view
-    return view('quizzes.scores', compact('scores', 'averageScore', 'minScore', 'maxScore'));
+        // Pass both the scores and average score to the view
+        return view('quizzes.scores', compact('scores', 'averageScore', 'minScore', 'maxScore'));
     }
 
     

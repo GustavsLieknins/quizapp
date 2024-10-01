@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+    Route::get('/history', [ScoreController::class, 'index'])->name('scores.index');
 
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
