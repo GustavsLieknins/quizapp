@@ -99,6 +99,7 @@ ul {
 }
 
 nav {
+    position: relative;
   background-color: #1E1E23;
   height: 65px;
   display: flex;
@@ -197,25 +198,57 @@ nav {
   transform: none;
 }
 </style>
-
   <nav role="navigation">
     <div id="menuToggle">
       <input type="checkbox" />
-      <a href="#" style="position: absolute; top: 25px; right: 25px; z-index: 3;">
-        <!-- <img src="{{ asset('img/logout-icon.svg') }}" alt="logout"> -->
-      </a>
+
       <span></span>
       <span></span>
       <span></span>
-    <ul id="menu">
-      <li><a href="{{ route('/') }}">Start</a></li>
-      <li><a href="{{ route('quizzes.index') }}">Quizzes</a></li>
-      <li><a href="{{ route('leaderboard.index') }}">Leaderboard</a></li>
-      <li><a href="{{ route('scores.index') }}">History</a></li>
-      <li><a href="{{ route('quizzes.about') }}">About</a></li>
-    </ul>
-   </div>
+
+      <ul id="menu">
+        <li><a href="{{ route('quizzes.index') }}">Quizzes</a></li>
+        <li><a href="{{ route('leaderboard.index') }}">Leaderboard</a></li>
+        <li><a href="{{ route('scores.index') }}">History</a></li>
+        <li><a href="{{ route('quizzes.about') }}">About</a></li>
+      </ul>
+    </div>
+    <form method="POST" action="{{ route('logout') }}" class="logout-form">
+        @csrf
+
+        <a :href="route('logout')" class="right-link page-link {{ request()->routeIs('logout') ? 'page-link-selected' : '' }}">
+          <div class="right-link-div page-link-div {{ request()->routeIs('logout') ? 'page-link-selected-div' : '' }}">
+            <button class="logout-button">Logout</button>
+            <img src="{{ asset('img/logout-icon.svg') }}" alt="logout" class="logout-icon">
+          </div>
+        </a>
+      </form>
   </nav>
+
+  <style>
+    .logout-form
+    {
+      position: absolute;
+      right: 20px;
+      /* top: 0; */
+    }
+    .logout-button
+    {
+        color: white;
+    }
+    .right-link-div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 3px;
+    }
+    .right-link-div > button
+    {
+        font-size: large;
+    }
+  </style>
 
   <script>
     document.addEventListener("click", function(event) {
