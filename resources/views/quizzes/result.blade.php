@@ -4,16 +4,9 @@
         {
             display: flex;
             min-width: 100vw;
-            height: calc(100vh - 40px);
+            height: calc(100vh - 80px);
             justify-content: center;
             align-items: center;
-        }
-        .main-wrapper
-        {
-            /* padding: 30px 150px;
-            padding-bottom: 0px; */
-            /* border-left: 1px solid gray;
-            border-right: 1px solid gray; */
         }
         .form
         {
@@ -67,6 +60,7 @@
             display: flex;
             justify-content: space-around;
             flex-direction: column;
+            font-size: medium;
         }
         .action-retake
         {
@@ -86,6 +80,29 @@
             color: white;
             margin-top: 5px;
             font-weight: 500;
+        }
+        @media (max-width: 767px) {
+            .main-wrapper
+            {
+                padding: 20px 0px;
+                padding-bottom: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                width: calc(100% - 80px);
+            }
+            .title-div
+            {
+                font-size: x-large;
+                font-weight: bold;
+            }
+            .actions
+            {
+                font-size: medium;
+            }
+            .container
+            {
+                height: calc(100vh - 275px);
+            }
         }
     </style>
     <div class="container">

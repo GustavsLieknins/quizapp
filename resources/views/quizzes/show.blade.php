@@ -71,6 +71,21 @@
             }
         }
 
+        @media (max-width: 767px) {
+            .main-wrapper
+            {
+                padding: 20px 0px;
+                padding-bottom: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                width: calc(100% - 80px);
+            }
+            .title-div
+            {
+                font-size: x-large;
+                font-weight: bold;
+            }
+        }
     </style>
             @php
                 $options = [
