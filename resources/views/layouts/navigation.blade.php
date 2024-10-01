@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     .navbar-div
     {
         display: flex;
@@ -78,4 +78,150 @@
             </a>
         </form>
     </div>
-</nav>
+</nav> -->
+
+<style>
+    a {
+  text-decoration: none;
+  color: #1E1E23;
+  opacity:1;
+  /* font-family: 'work sans', sans serif; */
+  font-size: 1.5em;
+  font-weight: 400;
+  transition: 200ms;
+}
+a:hover {
+  opacity:0.5;
+}
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+nav {
+  background-color: #1E1E23;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+#menuToggle {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: flex;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+#menuToggle span
+{
+  display: flex;
+  width: 29px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 5px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-3px, -1px);
+  background: #36383F;
+}
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu
+{
+  position: absolute;
+  width: 260px;
+  height: 110vh;
+  box-shadow: 0 0 10px #85888C;
+  margin: -50px 0 0 -50px;
+  padding: 50px;
+  padding-top: 105px;
+  background-color: #F5F6FA;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  transition-delay: 2s;
+}
+
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+</style>
+
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" />
+      <a href="#" style="position: absolute; top: 25px; right: 25px; z-index: 3;">
+        <!-- <img src="{{ asset('img/logout-icon.svg') }}" alt="logout"> -->
+      </a>
+      <span></span>
+      <span></span>
+      <span></span>
+    <ul id="menu">
+      <li><a href="{{ route('/') }}">Start</a></li>
+      <li><a href="{{ route('quizzes.index') }}">Quizzes</a></li>
+      <li><a href="{{ route('leaderboard.index') }}">Leaderboard</a></li>
+      <li><a href="{{ route('scores.index') }}">History</a></li>
+      <li><a href="{{ route('quizzes.about') }}">About</a></li>
+    </ul>
+   </div>
+  </nav>
+
+  <script>
+    document.addEventListener("click", function(event) {
+      if (!event.target.closest("#menuToggle")) {
+        document.getElementById("menuToggle").querySelector("input").checked = false;
+      }
+    });
+  </script>
+

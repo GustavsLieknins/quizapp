@@ -1,20 +1,21 @@
 <x-app-layout>
-    <div class="container">
-        <h1>Leaderboard for {{ $quiz->name }}</h1>
-        <table class="border border-gray-400 border-collapse w-full content-center">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Leaderboard for {{ $quiz->name }}</h1>
+        
+        <table class="table-auto w-full">
             <thead>
                 <tr>
-                    <th class="border border-gray-400 px-4 py-2">Rank</th>
-                    <th class="border border-gray-400 px-4 py-2">User</th>
-                    <th class="border border-gray-400 px-4 py-2">Score</th>
+                    <th class="px-4 py-2 border-t border-b border-gray-300">Rank</th>
+                    <th class="px-4 py-2 border-t border-b border-gray-300">User</th>
+                    <th class="px-4 py-2 border-t border-b border-gray-300">Score</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($scores as $index => $score)
                     <tr>
-                        <td class="border border-gray-400 px-4 py-2">{{ $index + 1 }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $score->username }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $score->score }}</td>
+                        <td class="px-4 py-2 border-b border-gray-300">{{ $index + 1 }}</td>
+                        <td class="px-4 py-2 border-b border-gray-300">{{ $score->username }}</td>
+                        <td class="px-4 py-2 border-b border-gray-300">{{ $score->score }}</td>
                     </tr>
                 @endforeach
             </tbody>
