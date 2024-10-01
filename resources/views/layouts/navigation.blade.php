@@ -175,7 +175,7 @@ nav {
 {
   position: absolute;
   width: 260px;
-  height: 110vh;
+  height: 130vh;
   box-shadow: 0 0 10px #85888C;
   margin: -50px 0 0 -50px;
   padding: 50px;
@@ -207,6 +207,7 @@ nav {
       <span></span>
 
       <ul id="menu">
+        <li><a href="{{ route('/') }}">Home</a></li>
         <li><a href="{{ route('quizzes.index') }}">Quizzes</a></li>
         <li><a href="{{ route('leaderboard.index') }}">Leaderboard</a></li>
         <li><a href="{{ route('scores.index') }}">History</a></li>
@@ -248,6 +249,10 @@ nav {
     {
         font-size: large;
     }
+    .right-link-div > button:hover
+    {
+        color: white;
+    }
   </style>
 
   <script>
@@ -255,6 +260,9 @@ nav {
       if (!event.target.closest("#menuToggle")) {
         document.getElementById("menuToggle").querySelector("input").checked = false;
       }
+    });
+    document.addEventListener("scroll", function() {
+      document.getElementById("menuToggle").querySelector("input").checked = false;
     });
   </script>
 
