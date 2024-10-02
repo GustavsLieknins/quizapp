@@ -19,14 +19,21 @@ class LeaderboardController extends Controller
     public function show(Quiz $quiz)
 {
         // Fetch the highest score for each user who took the selected quiz
-        $scores = Score::where('quizId', $quiz->id)
+        $scoresAvg = Score::where('quizId', $quiz->id)
+            ->join('users', 'users.id', '=', 'scores.userId')
+            ->selectRaw("users.username, FORMAT(AVG(scores.score), 2) as score")
+            ->groupBy('users.id', 'users.username')
+            ->orderBy('score', 'desc')
+            ->get();
+
+        $scoresMax = Score::where('quizId', $quiz->id)
             ->join('users', 'users.id', '=', 'scores.userId')
             ->select('users.username', \DB::raw('MAX(scores.score) as score'))
             ->groupBy('users.id', 'users.username')
             ->orderBy('score', 'desc')
             ->get();
 
-        return view('leaderboard.show', compact('quiz', 'scores'));
+        return view('leaderboard.show', compact('quiz', 'scoresAvg', 'scoresMax'));
 }
 
 }

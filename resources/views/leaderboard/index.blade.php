@@ -7,7 +7,7 @@
     </style>
 
     <div class="container">
-        <h1 class="text-3xl font-bold mb-4">Quiz Leaderboards</h1>
+        <h1 class="text-3xl font-bold mb-4 p-1">Quiz Leaderboards</h1>
         <ol class="list-decimal ml-6">
             @foreach ($quizzes as $quiz)
                 <li class="mb-2">
