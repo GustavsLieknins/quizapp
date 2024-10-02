@@ -11,7 +11,7 @@
 }
 
 .title {
-  font-size: 1.5em;
+  font-size: 0.5em;
   font-weight: 900;
   text-align: center;
   margin: 3px;
@@ -40,20 +40,20 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border: 1px solid coral;
+  border: 1px solid #e5e5e5;
   border-radius: 1rem;
 }
 
 .flip-card-front {
-  background: linear-gradient(120deg, white 60%, rgb(255, 231, 222) 88%,
-     rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
-  color: coral;
+  background: linear-gradient(120deg, #f5f5f5 60%, #e5e5e5 88%,
+     #d3d3d3 40%, rgba(223,223,223,0.603) 48%);
+  color: darkgrey;
 }
 
 .flip-card-back {
-  background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
-     bisque 40%, rgb(255, 185, 160) 78%);
-  color: white;
+  background: linear-gradient(120deg, #e5e5e5 30%, #d3d3d3 88%,
+     #cfcfcf 40%, rgba(191,191,191,0.603) 78%);
+  color: darkgrey;
   transform: rotateY(180deg);
 }
 
@@ -65,6 +65,8 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        z-index: 1;
+        position: relative;
     }
 
     </style>
@@ -109,4 +111,5 @@
     </div> -->
 
 </x-app-layout>
+
 
