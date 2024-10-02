@@ -23,6 +23,7 @@
         {
             margin-top: 10px;
             background-color: #33b249;
+            color: white;
             padding: 5px 10px;
             border-radius: 3px;
         }
