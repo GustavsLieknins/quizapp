@@ -18,6 +18,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/quizzes/{quiz}/edit', [QuizController::class, 'edit'])->name('quizzes.edit');
     Route::put('/quizzes/{quiz}', [QuizController::class, 'update'])->name('quizzes.update');
     Route::delete('/quizzes/{quiz}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
+    Route::get('/quizzes/delete', [QuizController::class, 'delete'])->name('quizzes.delete');
 
 });
 

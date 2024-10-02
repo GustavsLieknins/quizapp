@@ -9,6 +9,11 @@ use App\Models\Question;
 
 class QuizController extends Controller
 {
+    public function delete()
+    {
+        $quizzes = Quiz::all();
+        return view('quizzes.delete', compact('quizzes'));
+    }
     public function index()
     {
         $quizzes = Quiz::all();
