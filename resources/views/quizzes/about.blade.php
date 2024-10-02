@@ -40,7 +40,7 @@
             <div class="bg-gray-700 text-white shadow-lg rounded-lg p-6 text-center">
                 <h2 class="text-3xl font-bold mb-4">MEGA Designer</h2>
                 <h3 class="text-xl mb-4">Vasīlījs</h3>
-                <h2 class="text-lg mb-4">Vasīlījs ir talantīgs un LIELS dizainers, kurš spēj radīt vizuāli LIELUS un funkcionālus risinājumus. Viņa radošums un prasme izprast klientu vajadzības ļauj viņam izstrādāt dizainus, kas ne tikai izskatās LIELI, bet arī atbilst mērķiem. Vasīlījs vienmēr ir gatavs jauniem izaicinājumiem un spēj pielāgoties, lai nodrošinātu, ka katrs projekts ir LIELS.</h2>
+                <h2 class="text-lg mb-4">Vasīlījs ir talantīgs un LIELS dizainers, kurš spēj radīt vizuāli LIELUS un funkcionālus risinājumus. Viņa radošums un prasme izprast klientu vajadzības ļauj viņam izstrādāt dizainus, kas ne tikai izskatās LIELI, bet arī atbilst mērķiem. Vasīlījs vienmēr ir gatavs jauniem izaicinājumiem un spēj pielāgoties, lai nodrošinātu, ka katrs projekts ir LIELS un viņš pats ir ļoti LIELS.</h2>
                 <div class="flex justify-center">
                     <img src="{{ asset('img/vasilijs.jpg') }}" class="w-32 h-32 rounded-full mb-4" alt="Vasīlījs' profile picture">
                 </div>

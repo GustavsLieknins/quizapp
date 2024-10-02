@@ -17,7 +17,7 @@ class LeaderboardController extends Controller
 
     // Display the leaderboard for a specific quiz
     public function show(Quiz $quiz)
-{
+    {
         // Fetch the highest score for each user who took the selected quiz
         $scoresAvg = Score::where('quizId', $quiz->id)
             ->join('users', 'users.id', '=', 'scores.userId')
@@ -33,7 +33,21 @@ class LeaderboardController extends Controller
             ->orderBy('score', 'desc')
             ->get();
 
-        return view('leaderboard.show', compact('quiz', 'scoresAvg', 'scoresMax'));
-}
+        $currentUserRank = null;
+        $currentUserBestScore = null;
+        $currentUserAvgScore = null;
+        if (auth()->check()) {
+            $currentUser = auth()->user();
+            $currentUserScores = Score::where('userId', $currentUser->id)->where('quizId', $quiz->id)->get();
+
+            if ($currentUserScores->isNotEmpty()) {
+                $currentUserBestScore = $currentUserScores->max('score');
+                $currentUserAvgScore = number_format($currentUserScores->avg('score'), 2);
+                $currentUserRank = $scoresMax->where('username', $currentUser->username)->keys()->first() + 1;
+            }
+        }
+
+        return view('leaderboard.show', compact('quiz', 'scoresAvg', 'scoresMax', 'currentUserRank', 'currentUserBestScore', 'currentUserAvgScore'));
+    }
 
 }

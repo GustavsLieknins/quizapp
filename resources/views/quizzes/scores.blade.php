@@ -4,11 +4,12 @@
         
         <!-- Display the average, min, and max scores -->
         <div class="mb-4 flex justify-between">
-            <p class="flex items-center"><strong>Average Score:</strong> <span class="ml-2">{{ $averageScore }}</span></p>
+            <p class="flex items-center"><strong>Average Score:</strong> <span class="ml-2">{{ $averageScore ?? '0' }}</span></p>
             <p class="flex items-center"><strong></strong> <span class="ml-2"></span></p>
             <p class="flex items-center"><strong></strong> <span class="ml-2"></span></p>
         </div>
 
+        @if (count($scores) > 0)
         <table class="table-auto w-full">
             <thead>
                 <tr>
@@ -27,6 +28,9 @@
                 @endforeach
             </tbody>
         </table>
+        @else
+            <p class="text-center text-lg font-semibold text-gray-600">You haven't done any quizzes yet.</p>
+        @endif
     </div>
 </x-app-layout>
 

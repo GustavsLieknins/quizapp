@@ -1,22 +1,21 @@
+<style>
+
+</style>
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="main-wrapper">
         <div class="title-wrapper">
-            <h1>Welcome to the best Quiz app ever!</h1>
-            <h1>Register to continue</h1>
+            <h1 class="titler">Welcome to the best Quiz app ever!</h1>
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo">
         </div>
         <div class="logreg-wrapper">
             <div class="logreg-div">
+                <div class="form-name-div">
+                    <p>Register</p>
+                </div>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
-                    <!-- Email Address -->
-                    <!-- <div>
-                        <x-input-label for="email" :value="__('Email')" />
-                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                    </div> -->
 
                     <div class="input-logreg-div">
                         <label for="password" class="logreg-label">Username</label>
@@ -58,5 +57,4 @@
         </div>
     </div>
 </x-guest-layout>
-
 
