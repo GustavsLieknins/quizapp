@@ -40,7 +40,7 @@
             <div class="bg-gray-700 text-white shadow-lg rounded-lg p-6 text-center">
                 <h2 class="text-3xl font-bold mb-4">MEGA Designer</h2>
                 <h3 class="text-xl mb-4">Vasīlījs</h3>
-                <h2 class="text-lg mb-4">Vasīlijs ir ne tik talantīgs un ļoti LIELS programmētājs, kurš spēj radīt LIELUS un efektīvus risinājumus, neko nemāk un tikai prot programmēt ar mākslīgā intelekta (AI) rīku palīdzību. Viņa radošums un prasme izprast klientu vajadzības ļauj izstrādāt programmatūru, kas ne tikai darbojas LIELI, bet arī atbilst mērķiem. Viņš nekad nav gatavs jauniem izaicinājumiem un nespēj pielāgoties, lai nodrošinātu, ka katrs projekts ir LIELS un viņš pats ir ļoti LIELS.</h2>
+                <h2 class="text-lg mb-4">Kristaps ir talantīgs un izskatīgs dizainers, kurš spēj radīt vizuāli pievilcīgus un funkcionālus risinājumus. Viņa radošums un prasme izprast klientu vajadzības ļauj viņam izstrādāt dizainus, kas ne tikai izskatās lieliski, bet arī atbilst mērķiem. Kristaps vienmēr ir gatavs jauniem izaicinājumiem un spēj pielāgoties, lai nodrošinātu, ka katrs projekts ir veiksmīgs</h2>
                 <div class="flex justify-center">
                     <img src="{{ asset('img/vasilijs.jpg') }}" class="w-32 h-32 rounded-full mb-4" alt="Vasīlījs' profile picture">
                 </div>
