@@ -179,7 +179,7 @@ nav {
 {
   position: absolute;
   width: 260px;
-  height: 100vh;
+  height: 103.5vh;
   box-shadow: 0 0 10px #85888C;
   margin: -50px 0 0 -50px;
   padding: 50px;
@@ -189,6 +189,7 @@ nav {
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  overflow: hidden;
 }
 
 #menu li
