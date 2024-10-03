@@ -73,6 +73,7 @@
 
 
     <div class="quiz-wrapper">
+    @if (count($quizzes) > 0)
     @foreach ($quizzes as $quiz)
     <a href="{{ route('quizzes.show', $quiz->id) }}">
         <div class="flip-card">
@@ -89,6 +90,9 @@
         </div>
     </a>
     @endforeach
+    @else
+        <h1>No quizzes yet</h1>
+    @endif
     </div>
     <!-- <div class="container">
         <div class="row justify-content-center">
