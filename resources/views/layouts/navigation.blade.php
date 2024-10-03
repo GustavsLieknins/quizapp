@@ -179,7 +179,7 @@ nav {
 {
   position: absolute;
   width: 260px;
-  height: 130vh;
+  height: 100vh;
   box-shadow: 0 0 10px #85888C;
   margin: -50px 0 0 -50px;
   padding: 50px;
