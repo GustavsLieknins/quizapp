@@ -68,18 +68,40 @@
         z-index: 1;
         position: relative;
     }
-
+    
+    .pc
+    {
+        display: block;
+    }
+    
+    .mobile
+    {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .pc
+        {
+            display: none;
+        }
+        .mobile
+        {
+            display: block;
+        }
+    }
     </style>
 
 
     <div class="quiz-wrapper">
+    @if (count($quizzes) > 0)
     @foreach ($quizzes as $quiz)
     <a href="{{ route('quizzes.show', $quiz->id) }}">
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <p class="title">{{ $quiz->name }}</p>
-                    <p>Hover Me</p>
+                    <p class="pc">Hover Me</p>
+                    <p class="mobile">Click Me</p>
                 </div>
                 <div class="flip-card-back">
                     <p class="title">{{ $quiz->description }}</p>
@@ -89,6 +111,9 @@
         </div>
     </a>
     @endforeach
+    @else
+        <h1>No quizzes yet</h1>
+    @endif
     </div>
     <!-- <div class="container">
         <div class="row justify-content-center">

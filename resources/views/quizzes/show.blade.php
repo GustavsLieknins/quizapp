@@ -11,13 +11,14 @@
         {
             padding: 30px 150px;
             padding-bottom: 0px;
-            border-left: 1px solid gray;
-            border-right: 1px solid gray;
+            /* border-left: 1px solid gray;
+            border-right: 1px solid gray; */
         }
         .form
         {
             display: flex;
             flex-direction: column;
+            font-size: large;
         }
         .form > button
         {
@@ -41,6 +42,7 @@
             justify-content: center;
             padding-bottom: 5px;
             font-weight: bold;
+            font-size: x-large;
         }
 
         
@@ -87,6 +89,10 @@
                 font-weight: bold;
             }
         }
+        .question-p
+        {
+            font-size: large;
+        }
     </style>
             @php
                 $options = [
@@ -112,7 +118,7 @@
             </div>
             </div>
             <div>
-                <p><span class="bolder">Question:</span> {{ $questions[session('curQuestion') - 1]->question }}</p>
+                <p class="question-p"><span class="bolder">Question:</span> {{ $questions[session('curQuestion') - 1]->question }}</p>
             </div>
             <div>
                 <form action="{{ route('quizzes.next', $quiz->id) }}" method="POST" class="form">
